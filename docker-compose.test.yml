@@ -1,0 +1,18 @@
+services:
+  tests:
+    container_name: rocketbot-tests
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - ./:/app
+      - ./test-results:/app/htmlcov
+    environment:
+      - PYTHONPATH=/app
+    working_dir: /app
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge

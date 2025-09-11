@@ -14,6 +14,21 @@ services:
     environment:
       - PYTHONPATH=/app
 
+  rocketbot-challenge-tests:
+    container_name: rocketbot-challenge-tests
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - ./:/app
+      - ./test-results:/app/htmlcov
+    networks:
+      - rocketbot-network
+    environment:
+      - PYTHONPATH=/app
+    profiles:
+      - test
+
 networks:
   rocketbot-network:
     driver: bridge

@@ -137,3 +137,18 @@ dmypy.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Test results and coverage
+test-results/
+test-results/htmlcov/
+.coverage
+.coverage.*
+.pytest_cache/
+htmlcov/
+.tox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+pytest.ini.bak
+.pytest_cache/

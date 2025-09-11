@@ -14,8 +14,9 @@ class InMemoryTaskRepository(TaskRepositoryInterface):
     def create(self, task: Task) -> Task:
         """Create a new task"""
         task.id = self._next_id
-        task.created_at = datetime.now()
-        task.updated_at = datetime.now()
+        now = datetime.now()
+        task.created_at = now
+        task.updated_at = now
         self._tasks.append(task)
         self._next_id += 1
         return task

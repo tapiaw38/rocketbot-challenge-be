@@ -40,14 +40,17 @@ The project follows the hexagonal architecture pattern with the following layers
 
 The project includes a Makefile with convenient commands for development and deployment:
 
-| Command             | Description                                                 |
-| ------------------- | ----------------------------------------------------------- |
-| `make docker-build` | Build Docker images                                         |
-| `make docker-run`   | Run containers in detached mode                             |
-| `make run-dev`      | Build and run with hot reload (recommended for development) |
-| `make docker-stop`  | Stop all containers                                         |
-| `make docker-logs`  | View container logs (follow mode)                           |
-| `make docker-clean` | Stop containers and clean up volumes/images                 |
+| Command               | Description                                                 |
+| --------------------- | ----------------------------------------------------------- |
+| `make build`          | Build Docker images                                         |
+| `make run`            | Run containers in detached mode                             |
+| `make dev`            | Build and run with hot reload (recommended for development) |
+| `make stop`           | Stop all containers                                         |
+| `make logs`           | View container logs (follow mode)                           |
+| `make clean`          | Stop containers and clean up volumes/images                 |
+| `make test-build`     | Build test Docker image                                     |
+| `make test`           | Run tests in Docker container                               |
+| `make test-coverage`  | Run tests with coverage report                              |
 
 ## Quick Start with Docker
 
@@ -68,7 +71,7 @@ The project includes a Makefile with convenient commands for development and dep
 2. **Build and run with Docker Compose**:
 
    ```bash
-   make run-dev
+   make dev
    ```
 
 3. **Access the API**:
@@ -83,13 +86,13 @@ The project includes a Makefile with convenient commands for development and dep
 1. **Start the development environment**:
 
    ```bash
-   make run-dev
+   make dev
    ```
 
 2. **For development with hot reload**:
 
    ```bash
-   make run-dev
+   make dev
    ```
 
    The application will automatically reload when you make changes to the code.
@@ -267,13 +270,88 @@ rocketbot-challenge-be/
 - ✅ CORS configured for frontend development
 - ✅ Health check and documentation endpoints
 - ✅ Docker containerization support
+- ✅ Comprehensive test suite with Docker support
 
 ## Development
 
 ### Running in Development Mode
 
 ```bash
-make run-dev
+make dev
+```
+
+### Testing
+
+The project includes a comprehensive test suite with Docker support for isolated testing.
+
+#### Quick Start Testing
+
+```bash
+# Build test image
+make test-build
+
+# Run all tests
+make test
+
+# Run tests with coverage report
+make test-coverage
+
+# Using the test script (alternative)
+./test.sh build
+./test.sh coverage
+```
+
+#### Test Commands
+
+| Command                | Description                                    |
+| ---------------------- | ---------------------------------------------- |
+| `make test-build`      | Build the test Docker image                   |
+| `make test`            | Run all tests in Docker                       |
+| `make test-verbose`    | Run tests with verbose output                 |
+| `make test-coverage`   | Run tests with coverage report                |
+| `make test-specific`   | Run specific test (set TEST=path/to/test)     |
+| `make test-clean`      | Clean up test containers and images           |
+
+#### Test Script Usage
+
+The `test.sh` script provides a user-friendly interface:
+
+```bash
+# Show help
+./test.sh help
+
+# Run specific test file
+TEST=tests/unit/adapters/datasources/repositories/task/test_repository.py ./test.sh specific
+
+# Open shell in test container for debugging
+./test.sh shell
+```
+
+#### Test Structure
+
+```text
+tests/
+├── unit/                          # Unit tests
+│   └── adapters/
+│       └── datasources/
+│           └── repositories/
+│               └── task/
+│                   ├── test_repository.py          # Core repository tests
+│                   └── test_repository_fixtures.py # Advanced test scenarios
+├── conftest.py                    # Test fixtures and configuration
+└── README.md                      # Test documentation
+```
+
+#### Coverage Reports
+
+After running tests with coverage, open the HTML report:
+
+```bash
+# On Linux/Mac
+open test-results/htmlcov/index.html
+
+# On Windows
+start test-results/htmlcov/index.html
 ```
 
 The application will automatically reload when code changes are detected.
