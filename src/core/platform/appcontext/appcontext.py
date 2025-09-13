@@ -1,6 +1,7 @@
 from typing import Callable, Optional
 from src.adapters.datasources.datasources import Datasources
 from src.adapters.datasources.repositories.repositories import Repositories
+from src.core.platform.logging import Logger
 
 
 class Context:
@@ -9,8 +10,10 @@ class Context:
     def __init__(
         self,
         repositories: Optional[Repositories] = None,
+        logger: Optional[Logger] = None,
     ):
         self.repositories = repositories
+        self.logger = logger or Logger("appcontext")
 
 
 Option = Callable[[Context], None]
@@ -24,6 +27,7 @@ def new_factory(
     def factory(*opts: Option) -> Context:
         context = Context(
             repositories=Repositories.create_repositories(datasources),
+            logger=Logger("appcontext"),
         )
         for opt in opts:
             opt(context)

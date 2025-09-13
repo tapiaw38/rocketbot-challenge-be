@@ -132,7 +132,4 @@ class TestInMemoryTaskRepositoryBasic(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    print("Running basic repository tests...")
-    print("=" * 50)
-
     unittest.main(verbosity=2)
