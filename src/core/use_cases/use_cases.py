@@ -41,3 +41,4 @@ def create_usecases(context_factory: Factory) -> Usecases:
             delete_usecase=DeleteTaskUseCase(context_factory),
         ),
     )
+

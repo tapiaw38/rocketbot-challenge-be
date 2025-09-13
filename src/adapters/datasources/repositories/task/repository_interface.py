@@ -30,3 +30,4 @@ class TaskRepositoryInterface(ABC):
     def delete(self, task_id: int) -> bool:
         """Delete task by id"""
         pass
+

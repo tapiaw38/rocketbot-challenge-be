@@ -40,17 +40,17 @@ The project follows the hexagonal architecture pattern with the following layers
 
 The project includes a Makefile with convenient commands for development and deployment:
 
-| Command               | Description                                                 |
-| --------------------- | ----------------------------------------------------------- |
-| `make build`          | Build Docker images                                         |
-| `make run`            | Run containers in detached mode                             |
-| `make dev`            | Build and run with hot reload (recommended for development) |
-| `make stop`           | Stop all containers                                         |
-| `make logs`           | View container logs (follow mode)                           |
-| `make clean`          | Stop containers and clean up volumes/images                 |
-| `make test-build`     | Build test Docker image                                     |
-| `make test`           | Run tests in Docker container                               |
-| `make test-coverage`  | Run tests with coverage report                              |
+| Command              | Description                                                 |
+| -------------------- | ----------------------------------------------------------- |
+| `make build`         | Build Docker images                                         |
+| `make run`           | Run containers in detached mode                             |
+| `make dev`           | Build and run with hot reload (recommended for development) |
+| `make stop`          | Stop all containers                                         |
+| `make logs`          | View container logs (follow mode)                           |
+| `make clean`         | Stop containers and clean up volumes/images                 |
+| `make test-build`    | Build test Docker image                                     |
+| `make test`          | Run tests in Docker container                               |
+| `make test-coverage` | Run tests with coverage report                              |
 
 ## Quick Start with Docker
 
@@ -103,7 +103,7 @@ The project includes a Makefile with convenient commands for development and dep
 
    ```bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate
    ```
 
 2. **Install dependencies**:
@@ -261,16 +261,16 @@ rocketbot-challenge-be/
 
 ## Key Features
 
-- ✅ Hexagonal architecture (Ports and Adapters)
-- ✅ Clear separation of concerns
-- ✅ In-memory repository (no database required)
-- ✅ Automatic data validation with Pydantic
-- ✅ Auto-generated documentation with Swagger/OpenAPI
-- ✅ Proper HTTP error handling
-- ✅ CORS configured for frontend development
-- ✅ Health check and documentation endpoints
-- ✅ Docker containerization support
-- ✅ Comprehensive test suite with Docker support
+- Hexagonal architecture (Ports and Adapters)
+- Clear separation of concerns
+- In-memory repository (no database required)
+- Automatic data validation with Pydantic
+- Auto-generated documentation with Swagger/OpenAPI
+- Proper HTTP error handling
+- CORS configured for frontend development
+- Health check and documentation endpoints
+- Docker containerization support
+- Comprehensive test suite with Docker support
 
 ## Development
 
@@ -287,59 +287,53 @@ The project includes a comprehensive test suite with Docker support for isolated
 #### Quick Start Testing
 
 ```bash
-# Build test image
 make test-build
 
-# Run all tests
 make test
 
-# Run tests with coverage report
 make test-coverage
 
-# Using the test script (alternative)
 ./test.sh build
 ./test.sh coverage
 ```
 
 #### Test Commands
 
-| Command                | Description                                    |
-| ---------------------- | ---------------------------------------------- |
-| `make test-build`      | Build the test Docker image                   |
-| `make test`            | Run all tests in Docker                       |
-| `make test-verbose`    | Run tests with verbose output                 |
-| `make test-coverage`   | Run tests with coverage report                |
-| `make test-specific`   | Run specific test (set TEST=path/to/test)     |
-| `make test-clean`      | Clean up test containers and images           |
+| Command              | Description                               |
+| -------------------- | ----------------------------------------- |
+| `make test-build`    | Build the test Docker image               |
+| `make test`          | Run all tests in Docker                   |
+| `make test-verbose`  | Run tests with verbose output             |
+| `make test-coverage` | Run tests with coverage report            |
+| `make test-specific` | Run specific test (set TEST=path/to/test) |
+| `make test-clean`    | Clean up test containers and images       |
 
 #### Test Script Usage
 
 The `test.sh` script provides a user-friendly interface:
 
 ```bash
-# Show help
+
 ./test.sh help
 
-# Run specific test file
 TEST=tests/unit/adapters/datasources/repositories/task/test_repository.py ./test.sh specific
 
-# Open shell in test container for debugging
 ./test.sh shell
 ```
 
 #### Test Structure
 
-```text
+```bash
 tests/
-├── unit/                          # Unit tests
+├── unit/
 │   └── adapters/
 │       └── datasources/
 │           └── repositories/
 │               └── task/
-│                   ├── test_repository.py          # Core repository tests
-│                   └── test_repository_fixtures.py # Advanced test scenarios
-├── conftest.py                    # Test fixtures and configuration
-└── README.md                      # Test documentation
+│                   ├── test_repository.py
+│                   └── test_repository_fixtures.py
+├── conftest.py
+└── README.md
 ```
 
 #### Coverage Reports
