@@ -1,4 +1,5 @@
 from typing import Callable, Optional
+
 from src.adapters.datasources.datasources import Datasources
 from src.adapters.datasources.repositories.repositories import Repositories
 from src.core.platform.logging import Logger

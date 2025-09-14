@@ -1,12 +1,11 @@
 from fastapi import FastAPI
-from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
-from src.routes.routes_manager import RoutesManager
-from src.core.platform.logging import Logger
+from fastapi.responses import RedirectResponse
 
+from src.core.platform.logging import Logger
+from src.routes.routes_manager import RoutesManager
 
 logger = Logger("main")
-
 app = FastAPI(
     title="RocketBot Challenge API",
     description="API for managing tasks - RocketBot Challenge",

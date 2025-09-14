@@ -1,9 +1,10 @@
-from fastapi import APIRouter, status, HTTPException, Depends
 from typing import List
-from src.schemas.schemas import TaskInput, TaskOutput, DeleteTaskResponse
+
+from fastapi import APIRouter, Depends, HTTPException, status
+
 from src.adapters.services.task.task_service import TaskService
 from src.core.platform.logging import Logger
-
+from src.schemas.schemas import DeleteTaskResponse, TaskInput, TaskOutput
 
 router = APIRouter(
     prefix="/tasks",

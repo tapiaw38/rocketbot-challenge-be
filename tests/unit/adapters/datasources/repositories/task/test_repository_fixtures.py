@@ -2,11 +2,13 @@
 Additional tests for InMemoryTaskRepository using fixtures and edge cases.
 """
 
-import pytest
 from datetime import datetime
 
+import pytest
+
 from src.core.domain.model import Task
-from tests.conftest import assert_task_equality, assert_task_has_valid_timestamps
+from tests.conftest import (assert_task_equality,
+                            assert_task_has_valid_timestamps)
 
 
 class TestInMemoryTaskRepositoryWithFixtures:

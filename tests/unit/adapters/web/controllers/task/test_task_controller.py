@@ -1,12 +1,15 @@
-import pytest
-from unittest.mock import Mock, AsyncMock
-from fastapi import HTTPException, FastAPI
-from fastapi.testclient import TestClient
 from datetime import datetime
-from src.adapters.web.controllers.task.task_controller import router, get_task_service
+from unittest.mock import AsyncMock, Mock
+
+import pytest
+from fastapi import FastAPI, HTTPException
+from fastapi.testclient import TestClient
+
 from src.adapters.services.task.task_service import TaskService
-from src.schemas.schemas import TaskInput, TaskOutput, DeleteTaskResponse
+from src.adapters.web.controllers.task.task_controller import (
+    get_task_service, router)
 from src.core.domain.model import Task
+from src.schemas.schemas import DeleteTaskResponse, TaskInput, TaskOutput
 
 
 class TestTaskController:

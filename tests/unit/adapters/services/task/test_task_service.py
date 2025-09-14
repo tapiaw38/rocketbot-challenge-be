@@ -1,17 +1,17 @@
-import pytest
-from unittest.mock import Mock, AsyncMock
 from datetime import datetime
+from unittest.mock import AsyncMock, Mock
+
+import pytest
+
 from src.adapters.services.task.task_service import TaskService
-from src.core.use_cases.use_cases import Usecases, Task
-from src.core.use_cases.task_use_cases import (
-    CreateTaskUseCase,
-    GetAllTasksUseCase,
-    GetTaskByIdUseCase,
-    UpdateTaskUseCase,
-    DeleteTaskUseCase,
-)
-from src.schemas.schemas import TaskInput, TaskOutput, DeleteTaskResponse
 from src.core.domain.model import Task as DomainTask
+from src.core.use_cases.task_use_cases import (CreateTaskUseCase,
+                                               DeleteTaskUseCase,
+                                               GetAllTasksUseCase,
+                                               GetTaskByIdUseCase,
+                                               UpdateTaskUseCase)
+from src.core.use_cases.use_cases import Task, Usecases
+from src.schemas.schemas import DeleteTaskResponse, TaskInput, TaskOutput
 
 
 class TestTaskService:

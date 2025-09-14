@@ -4,15 +4,16 @@ Simple test runner that doesn't require pytest to be globally installed.
 This script can be used to run tests using Python's built-in unittest framework.
 """
 
-import sys
 import os
+import sys
 import unittest
 from datetime import datetime
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
+from adapters.datasources.repositories.task.repository import \
+    InMemoryTaskRepository
 from core.domain.model import Task
-from adapters.datasources.repositories.task.repository import InMemoryTaskRepository
 
 
 class TestInMemoryTaskRepositoryBasic(unittest.TestCase):

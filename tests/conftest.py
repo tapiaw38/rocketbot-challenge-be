@@ -2,12 +2,14 @@
 Test fixtures and configuration for the test suite.
 """
 
-import pytest
 from datetime import datetime
 from typing import List
 
+import pytest
+
+from src.adapters.datasources.repositories.task.repository import \
+    InMemoryTaskRepository
 from src.core.domain.model import Task
-from src.adapters.datasources.repositories.task.repository import InMemoryTaskRepository
 
 
 @pytest.fixture

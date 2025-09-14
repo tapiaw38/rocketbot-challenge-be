@@ -1,4 +1,5 @@
 from typing import List, Optional
+
 from src.core.domain.model import Task
 from src.core.platform.appcontext.appcontext import Context
 
@@ -11,6 +12,8 @@ class CreateTaskUseCase:
 
     def execute(self, title: str, category: str) -> Task:
         """Create a new task"""
+        if self.context.repositories is None:
+            raise ValueError("Repositories not initialized")
         task = Task(title=title, category=category)
         return self.context.repositories.task.create(task)
 
@@ -23,7 +26,8 @@ class GetAllTasksUseCase:
 
     def execute(self) -> List[Task]:
         """Get all tasks"""
-
+        if self.context.repositories is None:
+            raise ValueError("Repositories not initialized")
         return self.context.repositories.task.find_all()
 
 
@@ -35,7 +39,8 @@ class GetTaskByIdUseCase:
 
     def execute(self, task_id: int) -> Optional[Task]:
         """Get task by id"""
-
+        if self.context.repositories is None:
+            raise ValueError("Repositories not initialized")
         return self.context.repositories.task.find_by_id(task_id)
 
 
@@ -47,6 +52,8 @@ class UpdateTaskUseCase:
 
     def execute(self, task_id: int, title: str, category: str) -> Optional[Task]:
         """Update a task"""
+        if self.context.repositories is None:
+            raise ValueError("Repositories not initialized")
         task = Task(title=title, category=category)
         return self.context.repositories.task.update(task_id, task)
 
@@ -59,4 +66,6 @@ class DeleteTaskUseCase:
 
     def execute(self, task_id: int) -> bool:
         """Delete a task"""
+        if self.context.repositories is None:
+            raise ValueError("Repositories not initialized")
         return self.context.repositories.task.delete(task_id)

@@ -1,12 +1,12 @@
 from fastapi import FastAPI
-from src.adapters.web.controllers.task.task_controller import (
-    router as task_router,
-    get_task_service,
-)
-from src.adapters.services.task.task_service import TaskService
-from src.core.use_cases.use_cases import create_usecases
+
 from src.adapters.datasources.datasources import Datasources
+from src.adapters.services.task.task_service import TaskService
+from src.adapters.web.controllers.task.task_controller import get_task_service
+from src.adapters.web.controllers.task.task_controller import \
+    router as task_router
 from src.core.platform.appcontext.appcontext import new_factory
+from src.core.use_cases.use_cases import create_usecases
 
 
 class RoutesManager:

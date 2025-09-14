@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional
+
 from src.core.domain.model import Task
 
 
@@ -26,8 +27,7 @@ class TaskRepositoryInterface(ABC):
         """Update task by id"""
         pass
 
-
-@abstractmethod
-def delete(self, task_id: int) -> bool:
-    """Delete task by id"""
-    pass
+    @abstractmethod
+    def delete(self, task_id: int) -> bool:
+        """Delete task by id"""
+        pass
