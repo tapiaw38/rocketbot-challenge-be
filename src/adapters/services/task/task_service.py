@@ -1,7 +1,8 @@
 from typing import List, Optional
-from src.core.use_cases.use_cases import Usecases
-from src.schemas.schemas import TaskInput, TaskOutput, DeleteTaskResponse
+
 from src.core.platform.logging import Logger
+from src.core.use_cases.use_cases import Usecases
+from src.schemas.schemas import DeleteTaskResponse, TaskInput, TaskOutput
 
 
 class TaskService:
@@ -76,7 +77,9 @@ class TaskService:
             success = self.usecases.task.delete_usecase.execute(task_id)
             if success:
                 self.logger.info(f"Task deleted successfully with ID: {task_id}")
-                return DeleteTaskResponse(message=f"Task {task_id} eliminada correctamente")
+                return DeleteTaskResponse(
+                    message=f"Task {task_id} eliminada correctamente"
+                )
             else:
                 self.logger.warning(f"Task not found for deletion with ID: {task_id}")
                 return DeleteTaskResponse(message=f"Task {task_id} no encontrada")

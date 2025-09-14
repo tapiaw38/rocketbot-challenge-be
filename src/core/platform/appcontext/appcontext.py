@@ -1,4 +1,5 @@
 from typing import Callable, Optional
+
 from src.adapters.datasources.datasources import Datasources
 from src.adapters.datasources.repositories.repositories import Repositories
 from src.core.platform.logging import Logger
@@ -24,6 +25,7 @@ def new_factory(
     datasources: Datasources,
 ) -> Factory:
     """Create a new context factory"""
+
     def factory(*opts: Option) -> Context:
         context = Context(
             repositories=Repositories.create_repositories(datasources),
@@ -34,4 +36,3 @@ def new_factory(
         return context
 
     return factory
-

@@ -2,8 +2,9 @@
 Additional tests for InMemoryTaskRepository using fixtures and edge cases.
 """
 
-import pytest
 from datetime import datetime
+
+import pytest
 
 from src.core.domain.model import Task
 from tests.conftest import assert_task_equality, assert_task_has_valid_timestamps
@@ -163,7 +164,7 @@ class TestInMemoryTaskRepositoryEdgeCases:
         assert updated_task.updated_at > original_updated_at
 
     def test_delete_same_task_twice(self, empty_repository, sample_task):
-        """Test deleting the same task twice""" 
+        """Test deleting the same task twice"""
         created_task = empty_repository.create(sample_task)
 
         first_delete = empty_repository.delete(created_task.id)
@@ -200,9 +201,7 @@ class TestInMemoryTaskRepositoryEdgeCases:
 
         middle_task = empty_repository.find_by_id(num_tasks // 2)
         assert middle_task is not None
-        assert (
-            middle_task.title == f"Task {num_tasks // 2 - 1}"
-        )
+        assert middle_task.title == f"Task {num_tasks // 2 - 1}"
 
         middle_id = num_tasks // 2
         assert empty_repository.delete(middle_id) is True

@@ -14,4 +14,3 @@ class Repositories:
         return Repositories(
             task=InMemoryTaskRepository(),
         )
-

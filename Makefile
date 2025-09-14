@@ -44,9 +44,13 @@ format:
 	black .
 	isort .
 
+check-format:
+	black --check --diff .
+	isort --check-only --diff .
+
 lint:
 	flake8 src tests
-	mypy src
+	mypy src --ignore-missing-imports --no-warn-unused-ignores --check-untyped-defs
 
 quality:
 	make format

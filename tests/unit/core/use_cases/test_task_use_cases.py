@@ -1,15 +1,17 @@
-import pytest
-from unittest.mock import Mock, MagicMock
 from datetime import datetime
+from unittest.mock import MagicMock, Mock
+
+import pytest
+
+from src.core.domain.model import Task
+from src.core.platform.appcontext.appcontext import Context
 from src.core.use_cases.task_use_cases import (
     CreateTaskUseCase,
+    DeleteTaskUseCase,
     GetAllTasksUseCase,
     GetTaskByIdUseCase,
     UpdateTaskUseCase,
-    DeleteTaskUseCase,
 )
-from src.core.domain.model import Task
-from src.core.platform.appcontext.appcontext import Context
 
 
 class TestCreateTaskUseCase:

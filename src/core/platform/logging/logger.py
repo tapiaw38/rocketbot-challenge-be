@@ -1,7 +1,5 @@
 import logging
 import sys
-from typing import Optional
-from datetime import datetime
 
 
 class Logger:
@@ -52,7 +50,7 @@ class Logger:
 class LoggerFactory:
     """Factory for creating logger instances"""
 
-    _loggers = {}
+    _loggers: dict[str, Logger] = {}
 
     @classmethod
     def get_logger(cls, name: str, level: int = logging.INFO) -> Logger:

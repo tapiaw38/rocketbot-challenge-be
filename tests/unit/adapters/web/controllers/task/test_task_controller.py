@@ -1,12 +1,14 @@
-import pytest
-from unittest.mock import Mock, AsyncMock
-from fastapi import HTTPException, FastAPI
-from fastapi.testclient import TestClient
 from datetime import datetime
-from src.adapters.web.controllers.task.task_controller import router, get_task_service
+from unittest.mock import AsyncMock, Mock
+
+import pytest
+from fastapi import FastAPI, HTTPException
+from fastapi.testclient import TestClient
+
 from src.adapters.services.task.task_service import TaskService
-from src.schemas.schemas import TaskInput, TaskOutput, DeleteTaskResponse
+from src.adapters.web.controllers.task.task_controller import get_task_service, router
 from src.core.domain.model import Task
+from src.schemas.schemas import DeleteTaskResponse, TaskInput, TaskOutput
 
 
 class TestTaskController:
@@ -312,7 +314,7 @@ class TestTaskControllerEdgeCases:
 
         client = self._create_test_app()
 
-        with pytest.raises(Exception) as exc_info:
-            response = client.get("/tasks/")
+        response = client.get("/tasks/")
 
-        assert "Service error" in str(exc_info.value)
+        assert response.status_code == 500
+        assert response.json()["detail"] == "Internal server error"

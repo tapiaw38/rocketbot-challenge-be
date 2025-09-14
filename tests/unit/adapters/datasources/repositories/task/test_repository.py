@@ -5,15 +5,16 @@ This module contains comprehensive unit tests for the InMemoryTaskRepository cla
 testing all CRUD operations and edge cases.
 """
 
-import pytest
 from datetime import datetime
 from typing import List, Optional
 
-from src.core.domain.model import Task
+import pytest
+
 from src.adapters.datasources.repositories.task.repository import InMemoryTaskRepository
 from src.adapters.datasources.repositories.task.repository_interface import (
     TaskRepositoryInterface,
 )
+from src.core.domain.model import Task
 
 
 class TestInMemoryTaskRepository:
@@ -121,9 +122,9 @@ class TestInMemoryTaskRepository:
         task2 = Task(title="Task 2", category="Category 2")
         task3 = Task(title="Task 3", category="Category 3")
 
-        created_task1 = self.repository.create(task1)
-        created_task2 = self.repository.create(task2)
-        created_task3 = self.repository.create(task3)
+        self.repository.create(task1)
+        self.repository.create(task2)
+        self.repository.create(task3)
 
         found_task2 = self.repository.find_by_id(2)
         assert found_task2 is not None
@@ -220,7 +221,7 @@ class TestInMemoryTaskRepository:
         assert len(self.repository._tasks) == 0
 
     def test_complex_crud_operations_sequence(self):
-        """Test a complex sequence of CRUD operations"""        
+        """Test a complex sequence of CRUD operations"""
         task1 = self.repository.create(Task(title="Task 1", category="Work"))
         task2 = self.repository.create(Task(title="Task 2", category="Personal"))
         task3 = self.repository.create(Task(title="Task 3", category="Work"))
