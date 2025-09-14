@@ -11,6 +11,9 @@ This project is a Python-based REST API designed for task management following h
 - Docker containerization support
 - CORS enabled for frontend development
 - Input validation with Pydantic models
+- CI/CD pipeline with GitHub Actions
+- Automated code formatting and linting
+- Comprehensive test coverage (70%)
 
 ## API Endpoints
 
@@ -51,6 +54,10 @@ The project includes a Makefile with convenient commands for development and dep
 | `make test-build`    | Build test Docker image                                     |
 | `make test`          | Run tests in Docker container                               |
 | `make test-coverage` | Run tests with coverage report                              |
+| `make format`        | Format code with Black and isort                            |
+| `make check-format`  | Check code formatting without making changes                |
+| `make lint`          | Run flake8 and mypy linting                                 |
+| `make quality`       | Run format, lint, and test (full quality check)             |
 
 ## Quick Start with Docker
 
@@ -253,24 +260,60 @@ rocketbot-challenge-be/
 
 ## Technologies Used
 
+### Core Framework
+
 - **FastAPI**: Modern, fast web framework for building APIs
 - **Pydantic**: Data validation and serialization
 - **Uvicorn**: ASGI server for running FastAPI
-- **Python 3.8+**: Programming language
+- **Python 3.10+**: Programming language
+
+### Infrastructure & DevOps
+
 - **Docker**: Containerization platform
+- **Docker Compose**: Multi-container orchestration
+- **GitHub Actions**: CI/CD pipeline automation
+
+### Code Quality & Testing
+
+- **pytest**: Testing framework with async support
+- **Black**: Code formatter for consistent style
+- **isort**: Import sorting and organization
+- **Flake8**: Python linting and style checking
+- **MyPy**: Static type checking
+- **pytest-cov**: Code coverage analysis
 
 ## Key Features
 
-- Hexagonal architecture (Ports and Adapters)
-- Clear separation of concerns
-- In-memory repository (no database required)
-- Automatic data validation with Pydantic
-- Auto-generated documentation with Swagger/OpenAPI
-- Proper HTTP error handling
-- CORS configured for frontend development
-- Health check and documentation endpoints
-- Docker containerization support
-- Comprehensive test suite with Docker support
+### Architecture & Design
+
+- **Hexagonal architecture** (Ports and Adapters)
+- **Clear separation of concerns** across layers
+- **Dependency injection** with FastAPI
+- **Repository pattern** implementation
+
+### API & Documentation
+
+- **RESTful API design** for easy integration
+- **Automatic data validation** with Pydantic
+- **Auto-generated documentation** with Swagger/OpenAPI
+- **Proper HTTP error handling** with status codes
+- **CORS configured** for frontend development
+- **Health check endpoints** for monitoring
+
+### Data & Storage
+
+- **In-memory repository** (no database required)
+- **Automatic timestamps** for created/updated fields
+- **Auto-incremental IDs** starting from 1
+
+### DevOps & Quality
+
+- **Docker containerization** support
+- **Comprehensive test suite** with Docker support
+- **CI/CD pipeline** with GitHub Actions
+- **Automated code formatting** with Black and isort
+- **Static analysis** with Flake8 and MyPy
+- **Code coverage** reporting (70% target)
 
 ## Development
 
@@ -348,6 +391,101 @@ open test-results/htmlcov/index.html
 start test-results/htmlcov/index.html
 ```
 
+## CI/CD Pipeline
+
+The project includes a comprehensive CI/CD pipeline using GitHub Actions that ensures code quality and consistency.
+
+### Pipeline Stages
+
+1. **Code Quality Checks**:
+
+   - **Flake8**: Python linting for code style and errors
+   - **Black**: Automatic code formatting
+   - **isort**: Import sorting and organization
+   - **MyPy**: Static type checking
+
+2. **Testing**:
+
+   - **pytest**: Comprehensive test suite execution
+   - **Coverage**: Code coverage analysis (70% target)
+   - **Docker**: Isolated testing environment
+
+3. **Build & Deploy**:
+   - **Docker Build**: Container image creation
+   - **Security Scanning**: Vulnerability checks
+   - **Deployment**: Automated deployment to staging/production
+
+### GitHub Actions Workflow
+
+The pipeline runs automatically on:
+
+- **Push to main/develop branches**
+- **Pull Request creation/updates**
+- **Manual trigger**
+
+### Pipeline Status
+
+[![CI/CD Pipeline](https://github.com/your-username/rocketbot-challenge-be/workflows/CI/badge.svg)](https://github.com/your-username/rocketbot-challenge-be/actions)
+
+## Code Quality & Formatting
+
+The project enforces strict code quality standards through automated tools and CI/CD checks.
+
+### Code Formatting
+
+**Black** is used for consistent code formatting:
+
+- Line length: 88 characters
+- Consistent quote style
+- Proper indentation
+- Automatic code reformatting
+
+**isort** handles import organization:
+
+- Alphabetical sorting
+- Grouped by type (standard, third-party, local)
+- Compatible with Black formatting
+
+### Linting
+
+**Flake8** performs static analysis:
+
+- PEP 8 compliance
+- Code complexity checks
+- Unused imports detection
+- Syntax error detection
+
+**MyPy** provides static type checking:
+
+- Type annotation validation
+- Missing import detection
+- Untyped definitions checking
+
+### Quality Commands
+
+```bash
+# Format code automatically
+make format
+
+# Check formatting without changes
+make check-format
+
+# Run all linting checks
+make lint
+
+# Complete quality check (format + lint + test)
+make quality
+```
+
+This ensures code quality checks run automatically before each commit.
+
+### Code Quality Metrics
+
+- **Test Coverage**: 70%
+- **Linting**: Zero errors/warnings
+- **Type Coverage**: 100% for core modules
+- **Formatting**: Consistent across all files
+
 The application will automatically reload when code changes are detected.
 
 ### Available Make Commands
@@ -386,3 +524,76 @@ Available environment variables:
 - `API_RELOAD`: Enable auto-reload (default: true)
 - `API_WORKERS`: Number of workers (default: 1)
 - `ENVIRONMENT`: Environment mode (default: development)
+
+## Development Workflow
+
+### Code Quality Workflow
+
+1. **Before committing**:
+
+   ```bash
+   make format    # Format code
+   make lint      # Check for issues
+   make test      # Run tests
+   ```
+
+2. **Complete quality check**:
+
+   ```bash
+   make quality   # Runs format + lint + test
+   ```
+
+3. **Pre-commit setup** (optional):
+
+   ```bash
+   pip install pre-commit
+   pre-commit install
+   ```
+
+### Contributing Guidelines
+
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feature/your-feature`
+3. **Make your changes** following the code style
+4. **Run quality checks**: `make quality`
+5. **Commit your changes**: `git commit -m "Add your feature"`
+6. **Push to your fork**: `git push origin feature/your-feature`
+7. **Create a Pull Request**
+
+### Code Style Guidelines
+
+- **Follow PEP 8** standards (enforced by Flake8)
+- **Use Black** for consistent formatting
+- **Organize imports** with isort
+- **Add type hints** where possible
+- **Write tests** for new functionality
+- **Maintain 70%+ test coverage**
+
+### Troubleshooting
+
+#### Common Issues
+
+**Formatting errors**:
+
+```bash
+make format  # Auto-fix formatting
+```
+
+**Linting errors**:
+
+```bash
+make lint    # Check for issues
+```
+
+**Test failures**:
+
+```bash
+make test-verbose  # Run with detailed output
+```
+
+**Docker issues**:
+
+```bash
+make clean   # Clean up containers and images
+make build   # Rebuild images
+```
