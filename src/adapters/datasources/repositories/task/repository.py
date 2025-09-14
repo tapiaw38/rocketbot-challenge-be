@@ -1,7 +1,9 @@
 from typing import List, Optional
 from datetime import datetime
 from src.core.domain.model import Task
-from src.adapters.datasources.repositories.task.repository_interface import TaskRepositoryInterface
+from src.adapters.datasources.repositories.task.repository_interface import (
+    TaskRepositoryInterface,
+)
 
 
 class InMemoryTaskRepository(TaskRepositoryInterface):
@@ -50,4 +52,3 @@ class InMemoryTaskRepository(TaskRepositoryInterface):
                 del self._tasks[i]
                 return True
         return False
-

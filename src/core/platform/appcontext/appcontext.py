@@ -24,6 +24,7 @@ def new_factory(
     datasources: Datasources,
 ) -> Factory:
     """Create a new context factory"""
+
     def factory(*opts: Option) -> Context:
         context = Context(
             repositories=Repositories.create_repositories(datasources),
@@ -34,4 +35,3 @@ def new_factory(
         return context
 
     return factory
-

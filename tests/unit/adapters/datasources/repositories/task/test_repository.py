@@ -220,7 +220,7 @@ class TestInMemoryTaskRepository:
         assert len(self.repository._tasks) == 0
 
     def test_complex_crud_operations_sequence(self):
-        """Test a complex sequence of CRUD operations"""        
+        """Test a complex sequence of CRUD operations"""
         task1 = self.repository.create(Task(title="Task 1", category="Work"))
         task2 = self.repository.create(Task(title="Task 2", category="Personal"))
         task3 = self.repository.create(Task(title="Task 3", category="Work"))

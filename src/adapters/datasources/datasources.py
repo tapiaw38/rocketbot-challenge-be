@@ -7,8 +7,8 @@ class Datasources:
 
     pass
 
-    @staticmethod
-    def create_datasources():
-        """Factory method to create datasources"""
-        return Datasources()
 
+@staticmethod
+def create_datasources():
+    """Factory method to create datasources"""
+    return Datasources()

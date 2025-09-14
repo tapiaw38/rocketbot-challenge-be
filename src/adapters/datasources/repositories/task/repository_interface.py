@@ -26,8 +26,8 @@ class TaskRepositoryInterface(ABC):
         """Update task by id"""
         pass
 
-    @abstractmethod
-    def delete(self, task_id: int) -> bool:
-        """Delete task by id"""
-        pass
 
+@abstractmethod
+def delete(self, task_id: int) -> bool:
+    """Delete task by id"""
+    pass
