@@ -315,6 +315,6 @@ class TestTaskControllerEdgeCases:
         client = self._create_test_app()
 
         response = client.get("/tasks/")
-        
+
         assert response.status_code == 500
         assert response.json()["detail"] == "Internal server error"
