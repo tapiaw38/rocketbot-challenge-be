@@ -1,11 +1,13 @@
 from dataclasses import dataclass
 
 from src.core.platform.appcontext.appcontext import Factory
-from src.core.use_cases.task_use_cases import (CreateTaskUseCase,
-                                               DeleteTaskUseCase,
-                                               GetAllTasksUseCase,
-                                               GetTaskByIdUseCase,
-                                               UpdateTaskUseCase)
+from src.core.use_cases.task_use_cases import (
+    CreateTaskUseCase,
+    DeleteTaskUseCase,
+    GetAllTasksUseCase,
+    GetTaskByIdUseCase,
+    UpdateTaskUseCase,
+)
 
 
 @dataclass

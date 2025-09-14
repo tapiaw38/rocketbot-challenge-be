@@ -1,6 +1,5 @@
 from src.adapters.datasources.datasources import Datasources
-from src.adapters.datasources.repositories.task.repository import \
-    InMemoryTaskRepository
+from src.adapters.datasources.repositories.task.repository import InMemoryTaskRepository
 
 
 class Repositories:
