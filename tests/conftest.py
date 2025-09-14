@@ -7,8 +7,7 @@ from typing import List
 
 import pytest
 
-from src.adapters.datasources.repositories.task.repository import \
-    InMemoryTaskRepository
+from src.adapters.datasources.repositories.task.repository import InMemoryTaskRepository
 from src.core.domain.model import Task
 
 

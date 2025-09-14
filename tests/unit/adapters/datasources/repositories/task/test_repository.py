@@ -10,10 +10,10 @@ from typing import List, Optional
 
 import pytest
 
-from src.adapters.datasources.repositories.task.repository import \
-    InMemoryTaskRepository
-from src.adapters.datasources.repositories.task.repository_interface import \
-    TaskRepositoryInterface
+from src.adapters.datasources.repositories.task.repository import InMemoryTaskRepository
+from src.adapters.datasources.repositories.task.repository_interface import (
+    TaskRepositoryInterface,
+)
 from src.core.domain.model import Task
 
 

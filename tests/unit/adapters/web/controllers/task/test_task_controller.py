@@ -6,8 +6,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.testclient import TestClient
 
 from src.adapters.services.task.task_service import TaskService
-from src.adapters.web.controllers.task.task_controller import (
-    get_task_service, router)
+from src.adapters.web.controllers.task.task_controller import get_task_service, router
 from src.core.domain.model import Task
 from src.schemas.schemas import DeleteTaskResponse, TaskInput, TaskOutput
 

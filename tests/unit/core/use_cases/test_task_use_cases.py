@@ -5,11 +5,13 @@ import pytest
 
 from src.core.domain.model import Task
 from src.core.platform.appcontext.appcontext import Context
-from src.core.use_cases.task_use_cases import (CreateTaskUseCase,
-                                               DeleteTaskUseCase,
-                                               GetAllTasksUseCase,
-                                               GetTaskByIdUseCase,
-                                               UpdateTaskUseCase)
+from src.core.use_cases.task_use_cases import (
+    CreateTaskUseCase,
+    DeleteTaskUseCase,
+    GetAllTasksUseCase,
+    GetTaskByIdUseCase,
+    UpdateTaskUseCase,
+)
 
 
 class TestCreateTaskUseCase:

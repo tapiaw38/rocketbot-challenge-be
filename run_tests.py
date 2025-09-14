@@ -11,8 +11,7 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
-from adapters.datasources.repositories.task.repository import \
-    InMemoryTaskRepository
+from adapters.datasources.repositories.task.repository import InMemoryTaskRepository
 from core.domain.model import Task
 
 

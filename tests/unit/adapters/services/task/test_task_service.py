@@ -5,11 +5,13 @@ import pytest
 
 from src.adapters.services.task.task_service import TaskService
 from src.core.domain.model import Task as DomainTask
-from src.core.use_cases.task_use_cases import (CreateTaskUseCase,
-                                               DeleteTaskUseCase,
-                                               GetAllTasksUseCase,
-                                               GetTaskByIdUseCase,
-                                               UpdateTaskUseCase)
+from src.core.use_cases.task_use_cases import (
+    CreateTaskUseCase,
+    DeleteTaskUseCase,
+    GetAllTasksUseCase,
+    GetTaskByIdUseCase,
+    UpdateTaskUseCase,
+)
 from src.core.use_cases.use_cases import Task, Usecases
 from src.schemas.schemas import DeleteTaskResponse, TaskInput, TaskOutput
 
