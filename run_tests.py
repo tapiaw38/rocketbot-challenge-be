@@ -7,7 +7,6 @@ This script can be used to run tests using Python's built-in unittest framework.
 import os
 import sys
 import unittest
-from datetime import datetime
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
