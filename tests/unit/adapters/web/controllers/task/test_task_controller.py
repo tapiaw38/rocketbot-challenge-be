@@ -314,7 +314,7 @@ class TestTaskControllerEdgeCases:
 
         client = self._create_test_app()
 
-        with pytest.raises(Exception) as exc_info:
-            response = client.get("/tasks/")
-
-        assert "Service error" in str(exc_info.value)
+        response = client.get("/tasks/")
+        
+        assert response.status_code == 500
+        assert response.json()["detail"] == "Internal server error"
